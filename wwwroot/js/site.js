@@ -1,7 +1,4 @@
-﻿
-
-
-$(() => {
+﻿$(() => {
     LoadProData();
     var connection = new signalR.HubConnectionBuilder().withUrl("/signalServer").build();
     connection.start();
@@ -16,13 +13,11 @@ $(() => {
             method: 'GET',
             success: (result) => {
                 $.each(result, (k, v) => {
-                    tr += `<tr> 
-              
+                    tr += `<tr>               
                         <td>${v.movieName}</td>
                         <td>${v.year}</td>
                         <td>${v.runningTime}</td>
-                         <td>${v.rating}</td>
-             
+                         <td>${v.rating}</td>             
                          <td>
                             <a href='../Movies/Edit?id=${v.movieID}'>Edit</a>
                             <a href='../Movies/Details?id=${v.movieID}'>Details</a>
@@ -33,7 +28,7 @@ $(() => {
                 $("#tableBody").html(tr);
             },
             error: (error) => {
-                console.log(error)
+                console.log("signalr js err: "+error)
             }
 
         });
